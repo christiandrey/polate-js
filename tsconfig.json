@@ -1,0 +1,14 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"target": "es5",
+		"moduleResolution": "node",
+		"module": "esnext",
+		"noImplicitAny": false,
+		"noEmitHelpers": true,
+		"importHelpers": true,
+		"esModuleInterop": true
+	},
+	"allowSyntheticDefaultImports": true,
+	"exclude": ["node_modules", "packages"]
+}
