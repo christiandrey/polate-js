@@ -1,4 +1,4 @@
-import { sum, linearInterpolate } from "../index";
+import { linearInterpolate } from "../index";
 
 describe("linearInterpolate", () => {
 	test("Should accept as input range, an array whose length is 2", () => {
