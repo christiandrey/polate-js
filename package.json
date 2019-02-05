@@ -1,9 +1,15 @@
 {
-	"name": "@katana/interpolate",
+	"name": "polate-js",
 	"version": "1.0.0",
-	"description": "A Numerical and Color interpolation utility for Javascript and Typescript.",
+	"description": "A numerical and color interpolation utility for Javascript and Typescript.",
+	"keywords": [
+		"interpolate",
+		"interpolation",
+		"color",
+		"numerical"
+	],
 	"main": "./index.js",
-	"repository": "https://github.com/christiandrey/i6late.git",
+	"repository": "https://github.com/christiandrey/polate-js.git",
 	"author": "christiandrey <oluwaseun.adedire@gmail.com>",
 	"license": "MIT",
 	"private": false,
