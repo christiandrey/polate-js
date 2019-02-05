@@ -62,6 +62,6 @@ console.log(interpolatedValue); // ==> #ff8080
 | **`outputRange`** | A range of values to be mapped to the specified input range. It has to be the same length as the `inputRange` array. Provide an array of numbers to use a numerical interpolation technique, or an array of valid `HEX` or `RGB` colors to interpolate between colors. | `true`   |
 | **`extrapolate`** | What technique to use when the value to solve for is not within the input range. Can be either `clamp` or `extend`.                                                                                                                                                    | `extend` |
 
-# License
+## License
 
 MIT © Oluwaseun Adedire
