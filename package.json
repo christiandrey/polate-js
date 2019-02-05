@@ -1,7 +1,7 @@
 {
-	"name": "i6late",
+	"name": "@katana/interpolate",
 	"version": "1.0.0",
-	"description": "The only interpolation library you'll ever need.",
+	"description": "A Numerical and Color interpolation utility for Javascript and Typescript.",
 	"main": "./index.js",
 	"repository": "https://github.com/christiandrey/i6late.git",
 	"author": "christiandrey <oluwaseun.adedire@gmail.com>",
