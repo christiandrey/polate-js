@@ -6,7 +6,7 @@
 
 Polate-js is a numerical and color interpolation utility for Javascript and Typescript.
 
-# Installation
+## Installation
 
 Setup via NPM
 
@@ -20,7 +20,7 @@ Setup via Yarn
 yarn add polate-js
 ```
 
-# Usage
+## Usage
 
 ### Numerical interpolation
 
@@ -54,7 +54,7 @@ var interpolatedValue = interpolate(valueToSolveFor, {
 console.log(interpolatedValue); // ==> #ff8080
 ```
 
-# InterpolationConfig
+## InterpolationConfig
 
 | Prop              | Description                                                                                                                                                                                                                                                            | Default  |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
