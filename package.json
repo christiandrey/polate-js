@@ -2,7 +2,7 @@
 	"name": "i6late",
 	"version": "1.0.0",
 	"description": "The only interpolation library you'll ever need.",
-	"main": "index.js",
+	"main": "dist/index.js",
 	"repository": "https://github.com/christiandrey/i6late.git",
 	"author": "christiandrey <oluwaseun.adedire@gmail.com>",
 	"license": "MIT",

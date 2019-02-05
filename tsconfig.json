@@ -8,8 +8,9 @@
 		"noEmitHelpers": true,
 		"importHelpers": true,
 		"esModuleInterop": true,
-		"lib": ["es2017", "dom", "dom.iterable", "es5", "es2015.promise"]
+		"lib": ["es2017", "es5"],
+		"outDir": "dist"
 	},
 	"allowSyntheticDefaultImports": true,
-	"exclude": ["node_modules", "packages"]
+	"exclude": ["node_modules", "src/__tests__"]
 }
