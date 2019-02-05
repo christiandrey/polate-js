@@ -3,13 +3,13 @@
 	"compilerOptions": {
 		"target": "es5",
 		"moduleResolution": "node",
-		"module": "esnext",
+		"module": "commonjs",
 		"noImplicitAny": false,
 		"noEmitHelpers": true,
 		"importHelpers": true,
 		"esModuleInterop": true,
 		"lib": ["es2017", "es5"],
-		"outDir": "dist"
+		"outDir": "."
 	},
 	"allowSyntheticDefaultImports": true,
 	"exclude": ["node_modules", "src/__tests__"]

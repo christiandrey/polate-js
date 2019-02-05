@@ -1,6 +1,8 @@
-import { checkNoInfinityValidity, checkStrictlyIncreasingValidity } from "./validation.util";
-import { validateColor, normalizeColor, convertRgbToHexadecimal } from "./colors.util";
-export function findInterpolationRangeStart(inputRange, solveFor) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var validation_util_1 = require("./validation.util");
+var colors_util_1 = require("./colors.util");
+function findInterpolationRangeStart(inputRange, solveFor) {
     var rangeEnd;
     for (var i = 0; i < inputRange.length; i++) {
         if (inputRange[i] >= solveFor) {
@@ -10,7 +12,8 @@ export function findInterpolationRangeStart(inputRange, solveFor) {
     }
     return rangeEnd - 1;
 }
-export function linearInterpolate(inputRange, outputRange, solveFor, extrapolate) {
+exports.findInterpolationRangeStart = findInterpolationRangeStart;
+function linearInterpolate(inputRange, outputRange, solveFor, extrapolate) {
     if (extrapolate === void 0) { extrapolate = "extend"; }
     if (inputRange.length !== 2) {
         throw new Error("Linear interpolation only works for an input range length of 2.");
@@ -27,10 +30,10 @@ export function linearInterpolate(inputRange, outputRange, solveFor, extrapolate
     if (typeof solveFor !== "number") {
         throw new Error("The value to solve for can only be a number.");
     }
-    if (!checkNoInfinityValidity(solveFor, inputRange, outputRange)) {
+    if (!validation_util_1.checkNoInfinityValidity(solveFor, inputRange, outputRange)) {
         throw new Error("The values in the input range and output range and the value to solve for cannot include Infinity or -Infinity.");
     }
-    if (!checkStrictlyIncreasingValidity(inputRange)) {
+    if (!validation_util_1.checkStrictlyIncreasingValidity(inputRange)) {
         throw new Error("Values in the input range have to be strictly monotonically increasing.");
     }
     var inputMin = inputRange[0];
@@ -46,7 +49,8 @@ export function linearInterpolate(inputRange, outputRange, solveFor, extrapolate
     var increment = ((solveFor - inputRange[0]) * (outputRange[1] - outputRange[0])) / (inputRange[1] - inputRange[0]);
     return outputRange[0] + increment;
 }
-export function numericalInterpolate(inputRange, outputRange, solveFor, extrapolate) {
+exports.linearInterpolate = linearInterpolate;
+function numericalInterpolate(inputRange, outputRange, solveFor, extrapolate) {
     if (extrapolate === void 0) { extrapolate = "extend"; }
     if (inputRange.length !== outputRange.length) {
         throw new Error("The input range and output range must have equal sizes.");
@@ -57,16 +61,17 @@ export function numericalInterpolate(inputRange, outputRange, solveFor, extrapol
     if (!outputRange.every(function (o) { return typeof o === "number"; })) {
         throw new Error("The values in the output range can only be numbers.");
     }
-    if (!checkNoInfinityValidity(solveFor, inputRange)) {
+    if (!validation_util_1.checkNoInfinityValidity(solveFor, inputRange)) {
         throw new Error("The values in the input range and the value to solve for cannot include Infinity or -Infinity.");
     }
-    if (!checkStrictlyIncreasingValidity(inputRange)) {
+    if (!validation_util_1.checkStrictlyIncreasingValidity(inputRange)) {
         throw new Error("Values in the input range have to be strictly monotonically increasing.");
     }
     var interpolationRangeStart = findInterpolationRangeStart(inputRange, solveFor);
     return linearInterpolate([inputRange[interpolationRangeStart], inputRange[interpolationRangeStart + 1]], [outputRange[interpolationRangeStart], outputRange[interpolationRangeStart + 1]], solveFor, extrapolate);
 }
-export function colorInterpolate(inputRange, outputRange, solveFor, extrapolate) {
+exports.numericalInterpolate = numericalInterpolate;
+function colorInterpolate(inputRange, outputRange, solveFor, extrapolate) {
     if (extrapolate === void 0) { extrapolate = "extend"; }
     if (inputRange.length !== outputRange.length) {
         throw new Error("The input range and output range must have equal sizes.");
@@ -77,16 +82,16 @@ export function colorInterpolate(inputRange, outputRange, solveFor, extrapolate)
     if (!outputRange.every(function (o) { return typeof o === "string"; })) {
         throw new Error("The values in the output range can only be strings.");
     }
-    if (!outputRange.every(function (o) { return validateColor(o); })) {
+    if (!outputRange.every(function (o) { return colors_util_1.validateColor(o); })) {
         throw new Error("The values in the output range have to be valid hex or rgb colors.");
     }
-    if (!checkNoInfinityValidity(solveFor, inputRange)) {
+    if (!validation_util_1.checkNoInfinityValidity(solveFor, inputRange)) {
         throw new Error("The values in the input range and the value to solve for cannot include Infinity or -Infinity.");
     }
-    if (!checkStrictlyIncreasingValidity(inputRange)) {
+    if (!validation_util_1.checkStrictlyIncreasingValidity(inputRange)) {
         throw new Error("Values in the input range have to be strictly monotonically increasing.");
     }
-    var normalizedValues = outputRange.map(function (o) { return normalizeColor(o); });
+    var normalizedValues = outputRange.map(function (o) { return colors_util_1.normalizeColor(o); });
     var interpolationRangeStart = findInterpolationRangeStart(inputRange, solveFor);
     var interpolatedValues = new Array();
     var _loop_1 = function (i) {
@@ -96,5 +101,6 @@ export function colorInterpolate(inputRange, outputRange, solveFor, extrapolate)
     for (var i = 0; i < 3; i++) {
         _loop_1(i);
     }
-    return "#" + convertRgbToHexadecimal(interpolatedValues[0], interpolatedValues[1], interpolatedValues[2]);
+    return "#" + colors_util_1.convertRgbToHexadecimal(interpolatedValues[0], interpolatedValues[1], interpolatedValues[2]);
 }
+exports.colorInterpolate = colorInterpolate;
