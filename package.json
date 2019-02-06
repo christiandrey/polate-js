@@ -1,6 +1,6 @@
 {
 	"name": "polate-js",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A numerical and color interpolation utility for Javascript and Typescript.",
 	"keywords": [
 		"interpolate",
@@ -9,6 +9,7 @@
 		"numerical"
 	],
 	"main": "./index.js",
+	"types": "./index.d.ts",
 	"repository": "https://github.com/christiandrey/polate-js.git",
 	"author": "christiandrey <oluwaseun.adedire@gmail.com>",
 	"license": "MIT",

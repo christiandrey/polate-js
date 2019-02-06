@@ -2,14 +2,15 @@
 	"compileOnSave": false,
 	"compilerOptions": {
 		"target": "es5",
-		"moduleResolution": "node",
 		"module": "commonjs",
+		"removeComments": true,
 		"noImplicitAny": false,
 		"noEmitHelpers": true,
 		"importHelpers": true,
 		"esModuleInterop": true,
 		"lib": ["es2017", "es5"],
-		"outDir": "."
+		"outDir": "./",
+		"rootDir": "./src/"
 	},
 	"allowSyntheticDefaultImports": true,
 	"exclude": ["node_modules", "src/__tests__"]
