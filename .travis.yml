@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  #  - stable
-  - 9
-  - 8
-  - 6
-  - 4
+  - stable
+install:
+  - yarn
+script:
+  - yarn test
