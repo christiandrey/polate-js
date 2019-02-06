@@ -15,6 +15,7 @@
 	"license": "MIT",
 	"private": false,
 	"scripts": {
+		"build": "tsc",
 		"test": "jest",
 		"test:watch": "jest --watch"
 	},
