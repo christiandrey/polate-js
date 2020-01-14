@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var tslib_1 = require("tslib");
 function checkStrictlyIncreasingValidity(inputRange) {
     var validity = true;
     for (var i = 0; i <= inputRange.length - 2; i++) {
@@ -13,6 +14,6 @@ function checkStrictlyIncreasingValidity(inputRange) {
 exports.checkStrictlyIncreasingValidity = checkStrictlyIncreasingValidity;
 function checkNoInfinityValidity(solveFor, inputRange, outputRange) {
     if (outputRange === void 0) { outputRange = []; }
-    return !inputRange.concat(outputRange, [solveFor]).some(function (o) { return o === Infinity || o === -Infinity; });
+    return !tslib_1.__spreadArrays(inputRange, outputRange, [solveFor]).some(function (o) { return o === Infinity || o === -Infinity; });
 }
 exports.checkNoInfinityValidity = checkNoInfinityValidity;

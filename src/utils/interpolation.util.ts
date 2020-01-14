@@ -1,5 +1,5 @@
-import { checkNoInfinityValidity, checkStrictlyIncreasingValidity } from "./validation.util";
-import { validateColor, normalizeColor, convertRgbToHexadecimal } from "./colors.util";
+import { convertRgbToHexadecimal, normalizeColor, validateColor } from './colors.util';
+import { checkNoInfinityValidity, checkStrictlyIncreasingValidity } from './validation.util';
 
 export function findInterpolationRangeStart(inputRange: Array<number>, solveFor: number): number {
 	let rangeEnd: number;
@@ -40,10 +40,10 @@ export function linearInterpolate(inputRange: Array<number>, outputRange: Array<
 	const outputMin = outputRange[0];
 	const outputMax = outputRange[outputRange.length - 1];
 
-	if (solveFor < inputMin && extrapolate === "clamp") {
+	if (solveFor <= inputMin && extrapolate === "clamp") {
 		return outputMin;
 	}
-	if (solveFor > inputMax && extrapolate === "clamp") {
+	if (solveFor >= inputMax && extrapolate === "clamp") {
 		return outputMax;
 	}
 
@@ -95,6 +95,18 @@ export function colorInterpolate(inputRange: Array<number>, outputRange: Array<s
 	}
 	if (!checkStrictlyIncreasingValidity(inputRange)) {
 		throw new Error("Values in the input range have to be strictly monotonically increasing.");
+	}
+
+	const inputMin = inputRange[0];
+	const inputMax = inputRange[inputRange.length - 1];
+	const outputMin = outputRange[0];
+	const outputMax = outputRange[outputRange.length - 1];
+
+	if (solveFor <= inputMin && extrapolate === "clamp") {
+		return outputMin;
+	}
+	if (solveFor >= inputMax && extrapolate === "clamp") {
+		return outputMax;
 	}
 
 	const normalizedValues = outputRange.map(o => normalizeColor(o));

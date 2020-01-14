@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var validation_util_1 = require("./validation.util");
 var colors_util_1 = require("./colors.util");
+var validation_util_1 = require("./validation.util");
 function findInterpolationRangeStart(inputRange, solveFor) {
     var rangeEnd;
     for (var i = 0; i < inputRange.length; i++) {
@@ -40,10 +40,10 @@ function linearInterpolate(inputRange, outputRange, solveFor, extrapolate) {
     var inputMax = inputRange[inputRange.length - 1];
     var outputMin = outputRange[0];
     var outputMax = outputRange[outputRange.length - 1];
-    if (solveFor < inputMin && extrapolate === "clamp") {
+    if (solveFor <= inputMin && extrapolate === "clamp") {
         return outputMin;
     }
-    if (solveFor > inputMax && extrapolate === "clamp") {
+    if (solveFor >= inputMax && extrapolate === "clamp") {
         return outputMax;
     }
     var increment = ((solveFor - inputRange[0]) * (outputRange[1] - outputRange[0])) / (inputRange[1] - inputRange[0]);
@@ -90,6 +90,16 @@ function colorInterpolate(inputRange, outputRange, solveFor, extrapolate) {
     }
     if (!validation_util_1.checkStrictlyIncreasingValidity(inputRange)) {
         throw new Error("Values in the input range have to be strictly monotonically increasing.");
+    }
+    var inputMin = inputRange[0];
+    var inputMax = inputRange[inputRange.length - 1];
+    var outputMin = outputRange[0];
+    var outputMax = outputRange[outputRange.length - 1];
+    if (solveFor <= inputMin && extrapolate === "clamp") {
+        return outputMin;
+    }
+    if (solveFor >= inputMax && extrapolate === "clamp") {
+        return outputMax;
     }
     var normalizedValues = outputRange.map(function (o) { return colors_util_1.normalizeColor(o); });
     var interpolationRangeStart = findInterpolationRangeStart(inputRange, solveFor);
