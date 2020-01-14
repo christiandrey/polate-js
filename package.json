@@ -1,6 +1,6 @@
 {
 	"name": "polate-js",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"description": "A numerical and color interpolation utility for Javascript and Typescript.",
 	"keywords": [
 		"interpolate",
@@ -23,6 +23,7 @@
 		"@types/jest": "^24.0.25",
 		"jest": "^24.9.0",
 		"ts-jest": "^24.3.0",
+		"tslib": "^1.10.0",
 		"typescript": "^3.7.4"
 	}
 }

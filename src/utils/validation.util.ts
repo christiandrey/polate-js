@@ -10,5 +10,8 @@ export function checkStrictlyIncreasingValidity(inputRange: Array<number>): bool
 }
 
 export function checkNoInfinityValidity(solveFor: number, inputRange: Array<number>, outputRange: Array<number> = []): boolean {
-	return ![...inputRange, ...outputRange, solveFor].some(o => o === Infinity || o === -Infinity);
+	return !inputRange
+		.concat(outputRange)
+		.concat([solveFor])
+		.some(o => o === Infinity || o === -Infinity);
 }
