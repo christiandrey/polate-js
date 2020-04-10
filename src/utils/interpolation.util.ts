@@ -9,7 +9,7 @@ export function findInterpolationRangeStart(inputRange: Array<number>, solveFor:
 			break;
 		}
 	}
-	return rangeEnd - 1;
+	return rangeEnd === undefined ? inputRange.length - 2 : Math.max(0, rangeEnd - 1);
 }
 
 export function linearInterpolate(inputRange: Array<number>, outputRange: Array<number>, solveFor: number, extrapolate: "clamp" | "extend" = "extend"): number {

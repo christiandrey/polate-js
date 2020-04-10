@@ -10,7 +10,7 @@ function findInterpolationRangeStart(inputRange, solveFor) {
             break;
         }
     }
-    return rangeEnd - 1;
+    return rangeEnd === undefined ? inputRange.length - 2 : Math.max(0, rangeEnd - 1);
 }
 exports.findInterpolationRangeStart = findInterpolationRangeStart;
 function linearInterpolate(inputRange, outputRange, solveFor, extrapolate) {
