@@ -48,6 +48,18 @@ describe("linearInterpolate", () => {
 		expect(() => linearInterpolate([1, 0], [4, 5], 3)).toThrowError("Values in the input range have to be strictly monotonically increasing.");
 		expect(() => linearInterpolate([1, 1], [4, 5], 3)).toThrowError("Values in the input range have to be strictly monotonically increasing.");
 	});
+	test("Should extend values that are greater than input range's maximum value", () => {
+		expect(linearInterpolate([5, 10], [50, 100], 11, "extend")).toBe(110)
+	});
+	test("Should clamp values that are greater than input range's maximum value", () => {
+		expect(linearInterpolate([5, 10], [50, 100], 11, "clamp")).toBe(100)
+	});
+	test("Should extend values that are lower than input range's minimum value", () => {
+		expect(linearInterpolate([5, 10], [50, 100], 4, "extend")).toBe(40)
+	});
+	test("Should clamp values that are lower than input range's minimum value", () => {
+		expect(linearInterpolate([5, 10], [50, 100], 4, "clamp")).toBe(50)
+	});
 });
 
 describe("colorInterpolate", () => {
